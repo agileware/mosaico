@@ -118,7 +118,7 @@ var start = function(options, templateFile, templateMetadata, jsorjson, customEx
   };
 
   // simpleTranslationPlugin must be before the undoStack to translate undo/redo labels
-  var extensions = [simpleTranslationPlugin, addUndoStackExtensionMaker(performanceAwareCaller), colorPlugin, utilPlugin, inlinerPlugin];
+  var extensions = [simpleTranslationPlugin, addUndoStackExtensionMaker(performanceAwareCaller), colorPlugin, inlinerPlugin];
   if (typeof customExtensions !== 'undefined')
     for (var k = 0; k < customExtensions.length; k++) extensions.push(customExtensions[k]);
   extensions.push(fileUploadMessagesExtension);
@@ -158,7 +158,7 @@ var init = function(options, customExtensions) {
   // Loading from configured template or configured metadata
   if (options && (options.template || options.data)) {
     if (options.data) {
-      var data = typeof data == 'string' ? JSON.parse(options.data) : options.data;
+      var data = JSON.parse(options.data);
       start(options, undefined, data.metadata, data.content, customExtensions);
     } else {
       start(options, options.template, undefined, undefined, customExtensions);
